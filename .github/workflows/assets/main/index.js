@@ -1,0 +1,24 @@
+System.register("chunks:///_virtual/bird.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){var i,t,r,n,s,o,l,a,p,c,h;return{setters:[function(e){i=e.applyDecoratedDescriptor,t=e.inheritsLoose,r=e.initializerDefineProperty,n=e.assertThisInitialized},function(e){s=e.cclegacy,o=e._decorator,l=e.SpriteFrame,a=e.Collider2D,p=e.Contact2DType,c=e.Sprite,h=e.Component}],execute:function(){var u,v,g,d,f;s._RF.push({},"6d280QxpIlHcIRtUcCl0JYA","bird",void 0);var b=o.ccclass,m=o.property;e("bird",(u=b("bird"),v=m([l]),u((f=i((d=function(e){function i(){for(var i,t=arguments.length,s=new Array(t),o=0;o<t;o++)s[o]=arguments[o];return i=e.call.apply(e,[this].concat(s))||this,r(i,"birdSprites",f,n(i)),i.listToRemove=[],i.level=0,i.isMerging=!1,i}t(i,e);var s=i.prototype;return s.start=function(){var e=this.getComponent(a);e&&e.on(p.BEGIN_CONTACT,this.onBeginContact,this),this.updateVisual()},s.onBeginContact=function(e,t){var r=t.node.getComponent(i);r&&(this.isMerging||r.isMerging||this.level===r.level&&(this.isMerging=!0,r.isMerging=!0,this.levelUp(),this.listToRemove.push(t.node)))},s.levelUp=function(){this.level++,this.level>2&&(this.level=0),this.updateVisual(),console.log("level: "+this.level)},s.updateVisual=function(){var e=this.getComponent(c);e&&(this.birdSprites&&0!==this.birdSprites.length?e.spriteFrame=this.birdSprites[this.level]:console.log("Sprite belum di-assign!"))},s.update=function(){for(var e=0;e<this.listToRemove.length;e++)this.listToRemove[e].active=!1;this.listToRemove=[],this.isMerging=!1},i}(h)).prototype,"birdSprites",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),g=d))||g));s._RF.pop()}}}));
+
+System.register("chunks:///_virtual/gameController.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){var t,i,r,n,o,s,a,l,p,u,c,d,h,m,g,b,f;return{setters:[function(e){t=e.applyDecoratedDescriptor,i=e.inheritsLoose,r=e.initializerDefineProperty,n=e.assertThisInitialized},function(e){o=e.cclegacy,s=e._decorator,a=e.Prefab,l=e.Sprite,p=e.SpriteFrame,u=e.input,c=e.Input,d=e.instantiate,h=e.Vec3,m=e.RigidBody2D,g=e.ERigidBody2DType,b=e.tween,f=e.Component}],execute:function(){var y,S,T,v,w,C,F,P,O,z,D;o._RF.push({},"3def87KLOJE15B6sJFlC9Ty","gameController",void 0);var R=s.ccclass,E=s.property;e("gameController",(y=R("gameController"),S=E({type:a}),T=E(l),v=E(l),w=E([p]),y((P=t((F=function(e){function t(){for(var t,i=arguments.length,o=new Array(i),s=0;s<i;s++)o[s]=arguments[s];return t=e.call.apply(e,[this].concat(o))||this,r(t,"birdPrefab",P,n(t)),r(t,"digitTens",O,n(t)),r(t,"digitOnes",z,n(t)),r(t,"numberSprites",D,n(t)),t.score=0,t.isGameStarted=!1,t}i(t,e);var o=t.prototype;return o.start=function(){u.on(c.EventType.TOUCH_START,this.onTouchStart,this)},o.startGame=function(){this.isGameStarted=!0,this.score=0,console.log("GAME STARTED"),this.digitTens&&(this.digitTens.spriteFrame=this.numberSprites[0]),this.digitOnes&&(this.digitOnes.spriteFrame=this.numberSprites[0])},o.onTouchStart=function(e){if(this.isGameStarted){var t=e.getUILocation(),i=d(this.birdPrefab);this.node.addChild(i);var r=new h(t.x,t.y,0);i.setWorldPosition(r);var n=i.getComponent(m);n&&(n.type=g.Dynamic,n.wakeUp()),this.updateScore()}},o.updateScore=function(){this.score+=1;var e=Math.floor(this.score/10),t=this.score%10;this.digitOnes&&this.numberSprites[t]&&(this.digitOnes.spriteFrame=this.numberSprites[t]),this.digitTens&&(this.score<10?this.digitTens.spriteFrame=this.numberSprites[0]:this.digitTens.spriteFrame=this.numberSprites[e])},o.moveToX=function(e,t,i){void 0===i&&(i=.5);var r=e.worldPosition.clone();b(e).to(i,{worldPosition:new h(t,r.y,r.z)}).start()},o.update=function(e){},t}(f)).prototype,"birdPrefab",[S],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),O=t(F.prototype,"digitTens",[T],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),z=t(F.prototype,"digitOnes",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),D=t(F.prototype,"numberSprites",[w],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),C=F))||C));o._RF.pop()}}}));
+
+System.register("chunks:///_virtual/main",["./bird.ts","./gameController.ts"],(function(){return{setters:[null,null],execute:function(){}}}));
+
+(function(r) {
+  r('virtual:///prerequisite-imports/main', 'chunks:///_virtual/main'); 
+})(function(mid, cid) {
+    System.register(mid, [cid], function (_export, _context) {
+    return {
+        setters: [function(_m) {
+            var _exportObj = {};
+
+            for (var _key in _m) {
+              if (_key !== "default" && _key !== "__esModule") _exportObj[_key] = _m[_key];
+            }
+      
+            _export(_exportObj);
+        }],
+        execute: function () { }
+    };
+    });
+});
